@@ -490,10 +490,3 @@ Tüm parametreler `auvfgo/config.py` içindedir.
 
 ---
 
-<div align="center">
-
-**Yapay Zekâ Dersi Ödevi** · Mehmet Kahya · 2026
-
-⭐ Tamamen yazılımsal simülasyon — donanım gerektirmez ⭐
-
-</div>
