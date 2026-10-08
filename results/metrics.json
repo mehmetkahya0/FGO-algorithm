@@ -1,0 +1,1572 @@
+{
+ "config": {
+  "seed": 7,
+  "world_size": 1000.0,
+  "map_res": 10.0,
+  "plan_res": 10.0,
+  "thermocline_depth": 45.0,
+  "min_seafloor_depth": 30.0,
+  "dt": 0.5,
+  "keyframe_every": 4,
+  "max_time": 2800.0,
+  "cruise_speed": 1.8,
+  "stealth_speed": 1.0,
+  "max_yaw_rate": 0.12,
+  "yaw_gain": 0.8,
+  "altitude_cmd": 8.0,
+  "max_vz": 0.6,
+  "lookahead": 30.0,
+  "goal_tolerance": 15.0,
+  "start": [
+   60.0,
+   60.0
+  ],
+  "goals": [
+   [
+    420.0,
+    380.0
+   ],
+   [
+    820.0,
+    520.0
+   ],
+   [
+    190.0,
+    830.0
+   ],
+   [
+    920.0,
+    930.0
+   ]
+  ],
+  "gyro_noise": 0.002,
+  "gyro_bias0": 0.0015,
+  "gyro_bias_rw": 2e-05,
+  "dvl_noise": 0.02,
+  "dvl_scale_error": 0.006,
+  "dvl_model_sigma": 0.25,
+  "dvl_sigma_model": 0.04,
+  "pressure_noise": 0.05,
+  "compass_noise_deg": 2.0,
+  "compass_misalign_deg": 1.5,
+  "compass_anomaly_coupling": 0.0004,
+  "mag_noise": 2.0,
+  "mag_map_noise": 0.5,
+  "sonar_range": 80.0,
+  "sonar_fov_deg": 65.0,
+  "sonar_pd": 0.85,
+  "sonar_range_sigma": 0.4,
+  "sonar_range_sigma_rel": 0.005,
+  "sonar_bearing_sigma_deg": 1.2,
+  "sonar_elev_sigma_deg": 2.0,
+  "sonar_false_alarm_rate": 0.08,
+  "sonar_multipath_prob": 0.05,
+  "optical_sigma": 0.12,
+  "mag_feature_range": 12.0,
+  "hydrophone_bearing_sigma_deg": 4.0,
+  "opt_every": 5,
+  "opt_iters": 3,
+  "final_iters": 25,
+  "huber_k": 2.0,
+  "cauchy_k": 2.5,
+  "mag_kernel": "huber",
+  "lm_kernel": "cauchy",
+  "compass_sigma_model_deg": 3.0,
+  "mag_sigma_model": 3.0,
+  "assoc_gate": 7.0,
+  "threat_prior_p": 0.0002,
+  "threat_decay_tau": 900.0,
+  "nominal_threat_radius": 140.0,
+  "nominal_threat_rate": 0.01,
+  "w_risk": 1500.0,
+  "w_info": 0.3,
+  "replan_every": 15,
+  "stealth_hazard_threshold": 0.002
+ },
+ "main_run": {
+  "navigation": {
+   "Ölü hesap (DVL+AHRS)": {
+    "ate_rmse": 65.42020418936868,
+    "max": 87.01704371634771,
+    "final": 87.01704371634771,
+    "heading_rmse_deg": 4.90920172254602,
+    "depth_rmse": 0.049712993168774575
+   },
+   "EKF-SLAM": {
+    "ate_rmse": 3.293224708535567,
+    "max": 7.481614081985593,
+    "final": 1.2263999150343659,
+    "heading_rmse_deg": 0.8729062675724716,
+    "depth_rmse": 0.03282357063635523
+   },
+   "FGO (çevrimiçi)": {
+    "ate_rmse": 3.4504596769488285,
+    "max": 8.018745207411493,
+    "final": 1.6426977321318712,
+    "heading_rmse_deg": 0.9629555635400414,
+    "depth_rmse": 0.04441840957512481
+   },
+   "FGO (düzleştirilmiş)": {
+    "ate_rmse": 2.1634898268269365,
+    "max": 4.9216996876300865,
+    "final": 1.0351264922184773,
+    "heading_rmse_deg": 0.5413336607296597,
+    "depth_rmse": 0.025823703427204213
+   }
+  },
+  "mapping": {
+   "FGO": {
+    "rmse_all": 15.670537833794489,
+    "median_all": 1.565939071922473,
+    "rmse": 3.7582099259897026,
+    "median": 1.1356513773513388,
+    "n_all": 77,
+    "n": 58
+   },
+   "EKF-SLAM": {
+    "rmse_all": 15.457464239191719,
+    "median_all": 1.6099817190138164,
+    "rmse": 3.782047988598613,
+    "median": 1.204443075866704,
+    "n_all": 77,
+    "n": 58
+   },
+   "Ölü hesap": {
+    "rmse_all": 56.63399391352834,
+    "median_all": 54.245407279787024,
+    "rmse": 52.12245269504371,
+    "median": 49.37229865351502,
+    "n_all": 77,
+    "n": 58
+   }
+  },
+  "classification": {
+   "confusion": [
+    [
+     106,
+     0,
+     6
+    ],
+    [
+     3,
+     5,
+     0
+    ],
+    [
+     8,
+     0,
+     6
+    ]
+   ],
+   "accuracy": 0.8731343283582089,
+   "mine_reports_n": 5,
+   "mine_precision": 1.0,
+   "mine_recall_seen": 0.8333333333333334,
+   "mines_total": 12,
+   "mines_seen": 6,
+   "mines_found": 5,
+   "mine_geo_err_mean": 0.8495761299094919,
+   "mine_reports": [
+    {
+     "lid": 20,
+     "true_cls": "mayin",
+     "p_mine": 0.9999986874758838,
+     "n_obs": 16,
+     "geo_err_m": 0.7446023938149836
+    },
+    {
+     "lid": 29,
+     "true_cls": "mayin",
+     "p_mine": 0.999999996153484,
+     "n_obs": 13,
+     "geo_err_m": 0.9149298141174794
+    },
+    {
+     "lid": 34,
+     "true_cls": "mayin",
+     "p_mine": 0.7224891291090395,
+     "n_obs": 4,
+     "geo_err_m": 0.90979778212299
+    },
+    {
+     "lid": 66,
+     "true_cls": "mayin",
+     "p_mine": 0.9997944456629764,
+     "n_obs": 9,
+     "geo_err_m": 0.5312236374399455
+    },
+    {
+     "lid": 73,
+     "true_cls": "mayin",
+     "p_mine": 0.999983453487415,
+     "n_obs": 11,
+     "geo_err_m": 1.1473270220520615
+    }
+   ]
+  },
+  "stealth_risk": {
+   "p_detect": 0.34305404121285865,
+   "exposure_time_s": 98.0,
+   "mission_time_s": 1616.0,
+   "path_length_m": 2911.95278143848,
+   "reached_all_goals": true,
+   "per_threat_integrated_lambda": {
+    "Sabit aktif sonar A": 0.005571998492519338,
+    "Gizli aktif sonar B": 0.0010509453707602074,
+    "Pasif hidrofon dizisi": 0.2504178416208063,
+    "Devriye gemisi": 0.16131818669777118
+   }
+  },
+  "stealth_shortest": {
+   "p_detect": 0.8546994147640984,
+   "exposure_time_s": 332.5,
+   "mission_time_s": 1304.0,
+   "path_length_m": 2407.2996399986246,
+   "reached_all_goals": true,
+   "per_threat_integrated_lambda": {
+    "Sabit aktif sonar A": 0.2390892252378049,
+    "Gizli aktif sonar B": 0.0681770863183712,
+    "Pasif hidrofon dizisi": 1.3817078502301212,
+    "Devriye gemisi": 0.2449958456161523
+   }
+  },
+  "consistency": {
+   "frac_within_95": 0.5802469135802469,
+   "mean_nees": 6.2078976932579355
+  },
+  "graph": {
+   "n_variables": 4450,
+   "n_factors": 3963,
+   "n_poses": 809,
+   "n_landmarks": 134,
+   "final_opt_time_s": 0.4135606288909912,
+   "mission_runtime_s": 70.14689445495605,
+   "calib_truth_[c_rad,k_rad_per_100nT,s_dvl]": [
+    -0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    -0.021744933754465925,
+    0.03580925835074255,
+    -0.005536614592611929
+   ]
+  },
+  "frontend": {
+   "associations": 722,
+   "inconsistent": 8
+  }
+ },
+ "classifier_ablation": {
+  "Yalnız sonar": {
+   "accuracy": 0.79375,
+   "macro_f1": 0.755579226381684,
+   "mine_recall": 0.8963337547408344,
+   "confusion": [
+    [
+     2005,
+     151,
+     242
+    ],
+    [
+     46,
+     709,
+     36
+    ],
+    [
+     280,
+     70,
+     461
+    ]
+   ],
+   "accuracy_optical_available": 0.8132411067193676
+  },
+  "Sonar + optik": {
+   "accuracy": 0.83325,
+   "macro_f1": 0.804032538429369,
+   "mine_recall": 0.9241466498103666,
+   "confusion": [
+    [
+     2074,
+     113,
+     211
+    ],
+    [
+     33,
+     731,
+     27
+    ],
+    [
+     231,
+     52,
+     528
+    ]
+   ],
+   "accuracy_optical_available": 0.9713438735177866
+  },
+  "Sonar + manyetik": {
+   "accuracy": 0.813,
+   "macro_f1": 0.7833689438248329,
+   "mine_recall": 0.8912768647281921,
+   "confusion": [
+    [
+     2005,
+     127,
+     266
+    ],
+    [
+     41,
+     705,
+     45
+    ],
+    [
+     206,
+     63,
+     542
+    ]
+   ],
+   "accuracy_optical_available": 0.8428853754940712
+  },
+  "Tam füzyon (sonar+optik+manyetik)": {
+   "accuracy": 0.84325,
+   "macro_f1": 0.8192391397632207,
+   "mine_recall": 0.9292035398230089,
+   "confusion": [
+    [
+     2060,
+     93,
+     245
+    ],
+    [
+     28,
+     735,
+     28
+    ],
+    [
+     180,
+     53,
+     578
+    ]
+   ],
+   "accuracy_optical_available": 0.9782608695652174
+  }
+ },
+ "monte_carlo": [
+  {
+   "seed": 107,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 58.14300030332182,
+     "max": 81.9650370608732,
+     "final": 81.92453479922887,
+     "heading_rmse_deg": 4.27678434787072,
+     "depth_rmse": 0.04925604321349992
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 2.949859994847976,
+     "max": 7.422133290176824,
+     "final": 1.3186927359161247,
+     "heading_rmse_deg": 0.7221532152087315,
+     "depth_rmse": 0.03313059818887684
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 3.0891558467095233,
+     "max": 6.785492778857268,
+     "final": 1.89210424333967,
+     "heading_rmse_deg": 0.6922615553461821,
+     "depth_rmse": 0.04484525379029738
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 1.010400454211753,
+     "max": 2.467531115019874,
+     "final": 1.868748271215899,
+     "heading_rmse_deg": 0.4134897165583405,
+     "depth_rmse": 0.026286017926128828
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 18.18010679353452,
+     "median_all": 1.2641474789779599,
+     "rmse": 1.3191828823482463,
+     "median": 1.09654893642834,
+     "n_all": 70,
+     "n": 48
+    },
+    "EKF-SLAM": {
+     "rmse_all": 18.354949681797518,
+     "median_all": 1.176722130779309,
+     "rmse": 3.0103310297527863,
+     "median": 1.0038798038456935,
+     "n_all": 70,
+     "n": 48
+    },
+    "Ölü hesap": {
+     "rmse_all": 54.0948380014307,
+     "median_all": 49.43182573697684,
+     "rmse": 49.02832848917829,
+     "median": 46.299009864236154,
+     "n_all": 70,
+     "n": 48
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      118,
+      0,
+      3
+     ],
+     [
+      3,
+      6,
+      0
+     ],
+     [
+      2,
+      0,
+      1
+     ]
+    ],
+    "accuracy": 0.9398496240601504,
+    "mine_reports_n": 6,
+    "mine_precision": 1.0,
+    "mine_recall_seen": 0.75,
+    "mines_total": 12,
+    "mines_seen": 8,
+    "mines_found": 6,
+    "mine_geo_err_mean": 1.1316623256009792
+   },
+   "stealth_risk": {
+    "p_detect": 0.27506047806611766,
+    "exposure_time_s": 48.5,
+    "mission_time_s": 1648.0,
+    "path_length_m": 2961.476970600115,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.005458994857655533,
+     "Gizli aktif sonar B": 0.0009104661156277844,
+     "Pasif hidrofon dizisi": 0.16991977886555093,
+     "Devriye gemisi": 0.14360271743158157
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.8589943880899776,
+    "exposure_time_s": 331.5,
+    "mission_time_s": 1306.0,
+    "path_length_m": 2407.43216678686,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.2140849083469604,
+     "Gizli aktif sonar B": 0.06713998266034267,
+     "Pasif hidrofon dizisi": 1.4360948639918083,
+     "Devriye gemisi": 0.23827263094503365
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 1.010400454211753,
+    "Sağlam çekirdek yok (L2)": 1.2915202771652636,
+    "Manyetik harita faktörü yok": 11.094354656967786,
+    "Sonar/optik nirengi (SLAM) yok": 1.2975213176070624,
+    "Optik kamera yok": 0.9948038562568632,
+    "Pusula kalibrasyonu yok": 2.403799587406588,
+    "DVL ölçek kalibrasyonu yok": 1.8310823169045922,
+    "Jiroskop sapma kestirimi yok": 1.3088698130157934,
+    "Pusula faktörü yok": 1.2598511912262282
+   },
+   "runtime_s": 70.36449313163757,
+   "calib_truth": [
+    0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    0.027649187395092405,
+    0.042198713701094716,
+    -0.007310372810616772
+   ],
+   "nees": 1.9832165270898787
+  },
+  {
+   "seed": 207,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 10.227422811337869,
+     "max": 20.14490072930409,
+     "final": 8.000970846238735,
+     "heading_rmse_deg": 1.6497377633788632,
+     "depth_rmse": 0.0499297490441583
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 2.2892342281977425,
+     "max": 8.180351636126204,
+     "final": 1.4605543283538178,
+     "heading_rmse_deg": 0.820503308339351,
+     "depth_rmse": 0.03262688034530902
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 2.2789113404611845,
+     "max": 7.349728476551028,
+     "final": 1.7338161446837876,
+     "heading_rmse_deg": 0.8967655188793862,
+     "depth_rmse": 0.04163925115842686
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 1.7169174575978974,
+     "max": 4.530259478117672,
+     "final": 1.6989758712793415,
+     "heading_rmse_deg": 0.42930477212210105,
+     "depth_rmse": 0.02537959068829973
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 13.283600893677916,
+     "median_all": 1.451871117136035,
+     "rmse": 3.2148262240985463,
+     "median": 1.0931095864743718,
+     "n_all": 76,
+     "n": 56
+    },
+    "EKF-SLAM": {
+     "rmse_all": 13.489637293005787,
+     "median_all": 1.4004114219907884,
+     "rmse": 4.239885997653244,
+     "median": 0.9894804909574861,
+     "n_all": 76,
+     "n": 56
+    },
+    "Ölü hesap": {
+     "rmse_all": 16.06630046964029,
+     "median_all": 10.105279331825013,
+     "rmse": 9.988820340710191,
+     "median": 9.168819848740954,
+     "n_all": 76,
+     "n": 56
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      107,
+      0,
+      5
+     ],
+     [
+      2,
+      5,
+      0
+     ],
+     [
+      8,
+      0,
+      4
+     ]
+    ],
+    "accuracy": 0.8854961832061069,
+    "mine_reports_n": 5,
+    "mine_precision": 1.0,
+    "mine_recall_seen": 1.0,
+    "mines_total": 12,
+    "mines_seen": 5,
+    "mines_found": 5,
+    "mine_geo_err_mean": 1.7501558340773324
+   },
+   "stealth_risk": {
+    "p_detect": 0.3107794629422005,
+    "exposure_time_s": 53.0,
+    "mission_time_s": 1640.0,
+    "path_length_m": 2948.5571410193716,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.0047077306771483515,
+     "Gizli aktif sonar B": 0.0005386274880470894,
+     "Pasif hidrofon dizisi": 0.16634489594415877,
+     "Devriye gemisi": 0.19874091931623292
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.861884984326012,
+    "exposure_time_s": 335.0,
+    "mission_time_s": 1318.0,
+    "path_length_m": 2430.834665714473,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.2439072192339062,
+     "Gizli aktif sonar B": 0.06512428633038433,
+     "Pasif hidrofon dizisi": 1.4317713156848906,
+     "Devriye gemisi": 0.24059620873654597
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 1.7169174575978974,
+    "Sağlam çekirdek yok (L2)": 2.0106856298374534,
+    "Manyetik harita faktörü yok": 12.384208574990078,
+    "Sonar/optik nirengi (SLAM) yok": 1.9675776533326155,
+    "Optik kamera yok": 1.7074216494309444,
+    "Pusula kalibrasyonu yok": 4.585955079375788,
+    "DVL ölçek kalibrasyonu yok": 2.5434215275150622,
+    "Jiroskop sapma kestirimi yok": 1.3748667263642862,
+    "Pusula faktörü yok": 1.9604848564954727
+   },
+   "runtime_s": 70.77384805679321,
+   "calib_truth": [
+    -0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    -0.02204395788540006,
+    0.038980781301070515,
+    -0.007019555868154152
+   ],
+   "nees": 3.09734136020109
+  },
+  {
+   "seed": 307,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 40.30231554353124,
+     "max": 52.69499970822389,
+     "final": 41.050882743044546,
+     "heading_rmse_deg": 1.521490948194613,
+     "depth_rmse": 0.04902001587614569
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 3.1839031466577374,
+     "max": 7.138572369007099,
+     "final": 1.8795627531758858,
+     "heading_rmse_deg": 0.701095144339361,
+     "depth_rmse": 0.031537325853717386
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 3.7932259572531355,
+     "max": 8.986479146386321,
+     "final": 2.209007840283612,
+     "heading_rmse_deg": 0.8137565858005159,
+     "depth_rmse": 0.04076407559067726
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 2.1717979257133795,
+     "max": 4.409848042595947,
+     "final": 2.3619684466776647,
+     "heading_rmse_deg": 0.4139277384968597,
+     "depth_rmse": 0.025014030032945243
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 17.72925725945864,
+     "median_all": 3.345151035331787,
+     "rmse": 5.2756795316703124,
+     "median": 2.84770472506768,
+     "n_all": 84,
+     "n": 56
+    },
+    "EKF-SLAM": {
+     "rmse_all": 17.815420564435602,
+     "median_all": 2.6747317475741026,
+     "rmse": 5.612468771472368,
+     "median": 2.080882665610037,
+     "n_all": 84,
+     "n": 56
+    },
+    "Ölü hesap": {
+     "rmse_all": 42.36332395626057,
+     "median_all": 38.56973220173768,
+     "rmse": 38.09578318395752,
+     "median": 38.33737387175309,
+     "n_all": 84,
+     "n": 56
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      110,
+      1,
+      4
+     ],
+     [
+      0,
+      5,
+      0
+     ],
+     [
+      7,
+      0,
+      6
+     ]
+    ],
+    "accuracy": 0.9097744360902256,
+    "mine_reports_n": 6,
+    "mine_precision": 0.8333333333333334,
+    "mine_recall_seen": 1.0,
+    "mines_total": 12,
+    "mines_seen": 5,
+    "mines_found": 5,
+    "mine_geo_err_mean": 3.2686014997163904
+   },
+   "stealth_risk": {
+    "p_detect": 0.28784521175444555,
+    "exposure_time_s": 49.5,
+    "mission_time_s": 1642.0,
+    "path_length_m": 2951.8383115195197,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.0029813017967782575,
+     "Gizli aktif sonar B": 0.0011892806256385685,
+     "Pasif hidrofon dizisi": 0.16401073804355962,
+     "Devriye gemisi": 0.16934153492870288
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.8624685596530793,
+    "exposure_time_s": 331.0,
+    "mission_time_s": 1314.0,
+    "path_length_m": 2423.944415187854,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.24391865797119616,
+     "Gizli aktif sonar B": 0.0755609636605179,
+     "Pasif hidrofon dizisi": 1.4506987254673047,
+     "Devriye gemisi": 0.21292233472619365
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 2.1717979257133795,
+    "Sağlam çekirdek yok (L2)": 2.7812992501434506,
+    "Manyetik harita faktörü yok": 8.396435972828376,
+    "Sonar/optik nirengi (SLAM) yok": 3.422726608337452,
+    "Optik kamera yok": 2.2292071794070907,
+    "Pusula kalibrasyonu yok": 3.532224062880396,
+    "DVL ölçek kalibrasyonu yok": 2.51885212276264,
+    "Jiroskop sapma kestirimi yok": 2.568595985179048,
+    "Pusula faktörü yok": 2.534021692731168
+   },
+   "runtime_s": 67.35573959350586,
+   "calib_truth": [
+    0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    0.031034481835822084,
+    0.04304086018753578,
+    -0.011516074770154013
+   ],
+   "nees": 6.920180692664733
+  },
+  {
+   "seed": 407,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 32.84644559072891,
+     "max": 43.88485002516885,
+     "final": 38.082088977861055,
+     "heading_rmse_deg": 1.7435060033262095,
+     "depth_rmse": 0.05045580661831517
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 1.8118547042216637,
+     "max": 4.889336644748056,
+     "final": 0.09129429468373364,
+     "heading_rmse_deg": 0.6850925490669563,
+     "depth_rmse": 0.032871972093768485
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 1.910773664215769,
+     "max": 5.115986126922994,
+     "final": 0.3602006655899941,
+     "heading_rmse_deg": 0.7446119034658135,
+     "depth_rmse": 0.042147285336373616
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 1.7135102288986614,
+     "max": 3.568904533935392,
+     "final": 0.22991089635180195,
+     "heading_rmse_deg": 0.3432472623688861,
+     "depth_rmse": 0.0259159953714019
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 14.03977019213306,
+     "median_all": 1.9221651823414807,
+     "rmse": 2.9060618545309103,
+     "median": 1.4691479591565964,
+     "n_all": 79,
+     "n": 58
+    },
+    "EKF-SLAM": {
+     "rmse_all": 14.076470069409966,
+     "median_all": 1.7911182358559496,
+     "rmse": 2.9809898956021876,
+     "median": 1.4051560317770595,
+     "n_all": 79,
+     "n": 58
+    },
+    "Ölü hesap": {
+     "rmse_all": 33.78619814121767,
+     "median_all": 33.84894788172612,
+     "rmse": 30.720991641277514,
+     "median": 33.86506648854889,
+     "n_all": 79,
+     "n": 58
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      113,
+      0,
+      4
+     ],
+     [
+      2,
+      6,
+      1
+     ],
+     [
+      3,
+      0,
+      5
+     ]
+    ],
+    "accuracy": 0.9253731343283582,
+    "mine_reports_n": 6,
+    "mine_precision": 1.0,
+    "mine_recall_seen": 0.6666666666666666,
+    "mines_total": 12,
+    "mines_seen": 9,
+    "mines_found": 6,
+    "mine_geo_err_mean": 1.5290886139536972
+   },
+   "stealth_risk": {
+    "p_detect": 0.2938293550879265,
+    "exposure_time_s": 48.0,
+    "mission_time_s": 1620.0,
+    "path_length_m": 2919.6180140435144,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.0020152896105862777,
+     "Gizli aktif sonar B": 0.0012431436407479956,
+     "Pasif hidrofon dizisi": 0.16766351381012978,
+     "Devriye gemisi": 0.1754893430017545
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.8567826160831237,
+    "exposure_time_s": 322.0,
+    "mission_time_s": 1314.0,
+    "path_length_m": 2422.432217624464,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.20255745398420136,
+     "Gizli aktif sonar B": 0.06441964342854926,
+     "Pasif hidrofon dizisi": 1.439401672693693,
+     "Devriye gemisi": 0.24186455748371244
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 1.7135102288986614,
+    "Sağlam çekirdek yok (L2)": 1.9920813367464845,
+    "Manyetik harita faktörü yok": 2.58025410854736,
+    "Sonar/optik nirengi (SLAM) yok": 2.197941140573769,
+    "Optik kamera yok": 1.7846369853147854,
+    "Pusula kalibrasyonu yok": 2.0657315048964238,
+    "DVL ölçek kalibrasyonu yok": 1.4144021069287849,
+    "Jiroskop sapma kestirimi yok": 1.6039415690894683,
+    "Pusula faktörü yok": 2.09588345972507
+   },
+   "runtime_s": 66.29739189147949,
+   "calib_truth": [
+    0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    0.022103484247389532,
+    0.03422191762323764,
+    -0.009684125924199576
+   ],
+   "nees": 4.946865126338447
+  },
+  {
+   "seed": 507,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 44.12078932586795,
+     "max": 62.18487639670613,
+     "final": 62.00436178696649,
+     "heading_rmse_deg": 3.894664911486965,
+     "depth_rmse": 0.047453263536885885
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 1.829888200551191,
+     "max": 5.118608237432909,
+     "final": 1.7298425688494132,
+     "heading_rmse_deg": 0.7007275464477261,
+     "depth_rmse": 0.032162448322900786
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 2.366104532045214,
+     "max": 7.813738400142537,
+     "final": 2.0049047331663408,
+     "heading_rmse_deg": 0.7518287639179794,
+     "depth_rmse": 0.04695274643359809
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 2.0545561637234306,
+     "max": 5.831855525284159,
+     "final": 1.9149798945053926,
+     "heading_rmse_deg": 0.5401829596229802,
+     "depth_rmse": 0.025937487533065896
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 13.45337132003346,
+     "median_all": 2.2154941724718915,
+     "rmse": 2.534555295540402,
+     "median": 1.8582189051972908,
+     "n_all": 78,
+     "n": 56
+    },
+    "EKF-SLAM": {
+     "rmse_all": 13.874636133741586,
+     "median_all": 1.766607351424291,
+     "rmse": 4.432617606369947,
+     "median": 1.6044239081348355,
+     "n_all": 78,
+     "n": 56
+    },
+    "Ölü hesap": {
+     "rmse_all": 40.04490147682066,
+     "median_all": 38.73450136810111,
+     "rmse": 38.20876840017409,
+     "median": 40.350330733692886,
+     "n_all": 78,
+     "n": 56
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      126,
+      0,
+      4
+     ],
+     [
+      4,
+      2,
+      0
+     ],
+     [
+      5,
+      0,
+      5
+     ]
+    ],
+    "accuracy": 0.910958904109589,
+    "mine_reports_n": 2,
+    "mine_precision": 1.0,
+    "mine_recall_seen": 0.4,
+    "mines_total": 12,
+    "mines_seen": 5,
+    "mines_found": 2,
+    "mine_geo_err_mean": 3.5756569037863444
+   },
+   "stealth_risk": {
+    "p_detect": 0.3137308963096552,
+    "exposure_time_s": 52.5,
+    "mission_time_s": 1630.0,
+    "path_length_m": 2932.5073693401764,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.005780968925360837,
+     "Gizli aktif sonar B": 0.0008464626792379852,
+     "Pasif hidrofon dizisi": 0.16221251544315216,
+     "Devriye gemisi": 0.20566248258408676
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.8664381575292356,
+    "exposure_time_s": 339.5,
+    "mission_time_s": 1336.0,
+    "path_length_m": 2447.923839160253,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.2636473859753278,
+     "Gizli aktif sonar B": 0.06553014643383369,
+     "Pasif hidrofon dizisi": 1.4467052786573955,
+     "Devriye gemisi": 0.2382380150513944
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 2.0545561637234306,
+    "Sağlam çekirdek yok (L2)": 2.5848330197728493,
+    "Manyetik harita faktörü yok": 9.952359926477719,
+    "Sonar/optik nirengi (SLAM) yok": 2.47388959691864,
+    "Optik kamera yok": 2.0972461386025674,
+    "Pusula kalibrasyonu yok": 4.310176475199406,
+    "DVL ölçek kalibrasyonu yok": 1.8645977897537858,
+    "Jiroskop sapma kestirimi yok": 1.9772679393160801,
+    "Pusula faktörü yok": 2.406037039170398
+   },
+   "runtime_s": 67.37843418121338,
+   "calib_truth": [
+    0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    0.031439080018446613,
+    0.03248675093135946,
+    -0.009504730648915617
+   ],
+   "nees": 7.086927147699809
+  },
+  {
+   "seed": 607,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 20.24374232969017,
+     "max": 32.64794093457583,
+     "final": 17.437193474734542,
+     "heading_rmse_deg": 2.0157782083991913,
+     "depth_rmse": 0.049958956220505245
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 1.7151831420127943,
+     "max": 6.186938729800902,
+     "final": 0.35733077525330176,
+     "heading_rmse_deg": 0.7707975315059253,
+     "depth_rmse": 0.03321565147612455
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 1.8810207021645355,
+     "max": 5.841170835984161,
+     "final": 0.07523997560018457,
+     "heading_rmse_deg": 0.8329861017149378,
+     "depth_rmse": 0.04503985097787948
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 1.1876732556915406,
+     "max": 2.772347649096028,
+     "final": 0.4319066714194107,
+     "heading_rmse_deg": 0.3576345286390563,
+     "depth_rmse": 0.026192943848523213
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 15.480781665817792,
+     "median_all": 1.4494083399817435,
+     "rmse": 1.4289550269230253,
+     "median": 1.2461944009397523,
+     "n_all": 71,
+     "n": 52
+    },
+    "EKF-SLAM": {
+     "rmse_all": 15.400520831642941,
+     "median_all": 1.4262184951548416,
+     "rmse": 2.0322210704639576,
+     "median": 1.0964590411708786,
+     "n_all": 71,
+     "n": 52
+    },
+    "Ölü hesap": {
+     "rmse_all": 28.816864649016416,
+     "median_all": 24.686388091004712,
+     "rmse": 23.155873952708397,
+     "median": 21.845604690118023,
+     "n_all": 71,
+     "n": 52
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      107,
+      0,
+      4
+     ],
+     [
+      1,
+      9,
+      0
+     ],
+     [
+      2,
+      1,
+      5
+     ]
+    ],
+    "accuracy": 0.937984496124031,
+    "mine_reports_n": 10,
+    "mine_precision": 0.9,
+    "mine_recall_seen": 1.0,
+    "mines_total": 12,
+    "mines_seen": 8,
+    "mines_found": 8,
+    "mine_geo_err_mean": 5.275497051446659
+   },
+   "stealth_risk": {
+    "p_detect": 0.2891177578233921,
+    "exposure_time_s": 49.5,
+    "mission_time_s": 1648.0,
+    "path_length_m": 2958.731307857941,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.006620761657691943,
+     "Gizli aktif sonar B": 0.0005448899768822282,
+     "Pasif hidrofon dizisi": 0.19137103563541227,
+     "Devriye gemisi": 0.14115825955707936
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.8607061911345708,
+    "exposure_time_s": 332.5,
+    "mission_time_s": 1306.0,
+    "path_length_m": 2408.442700138513,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.2288468184537767,
+     "Gizli aktif sonar B": 0.05958959776666923,
+     "Pasif hidrofon dizisi": 1.4420340950826949,
+     "Devriye gemisi": 0.23750622555353343
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 1.1876732556915406,
+    "Sağlam çekirdek yok (L2)": 1.3275531380499455,
+    "Manyetik harita faktörü yok": 13.713429099977382,
+    "Sonar/optik nirengi (SLAM) yok": 1.7041775919151578,
+    "Optik kamera yok": 1.1880143945952633,
+    "Pusula kalibrasyonu yok": 4.454720413938936,
+    "DVL ölçek kalibrasyonu yok": 1.5116884509001316,
+    "Jiroskop sapma kestirimi yok": 1.169409993233914,
+    "Pusula faktörü yok": 1.4516891053593186
+   },
+   "runtime_s": 68.47053074836731,
+   "calib_truth": [
+    0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    0.02323396766148542,
+    0.03950841213231689,
+    -0.0076813445937043414
+   ],
+   "nees": 3.011250739586263
+  },
+  {
+   "seed": 707,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 48.01328031775307,
+     "max": 77.4003276664857,
+     "final": 77.4003276664857,
+     "heading_rmse_deg": 3.633635344314618,
+     "depth_rmse": 0.05102677800395455
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 1.4379991396495915,
+     "max": 4.046952731512661,
+     "final": 1.6749420720100896,
+     "heading_rmse_deg": 0.6857858078595174,
+     "depth_rmse": 0.033817596436646266
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 1.5802014896083416,
+     "max": 5.0498494763676565,
+     "final": 1.6203803857499235,
+     "heading_rmse_deg": 0.748718304254184,
+     "depth_rmse": 0.045439783405233525
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 1.228747081584715,
+     "max": 2.9202718510513854,
+     "final": 1.9900588710230152,
+     "heading_rmse_deg": 0.44168212039156507,
+     "depth_rmse": 0.026480768740451827
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 16.181526901590768,
+     "median_all": 1.373782653959345,
+     "rmse": 1.4451982110916075,
+     "median": 1.0936202156026096,
+     "n_all": 76,
+     "n": 56
+    },
+    "EKF-SLAM": {
+     "rmse_all": 16.221392275699156,
+     "median_all": 1.5540809153533819,
+     "rmse": 2.021389094319737,
+     "median": 1.0173118349870884,
+     "n_all": 76,
+     "n": 56
+    },
+    "Ölü hesap": {
+     "rmse_all": 43.60555983236812,
+     "median_all": 46.7654066089016,
+     "rmse": 41.249910101781936,
+     "median": 43.793397273650115,
+     "n_all": 76,
+     "n": 56
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      120,
+      0,
+      4
+     ],
+     [
+      1,
+      5,
+      0
+     ],
+     [
+      2,
+      0,
+      5
+     ]
+    ],
+    "accuracy": 0.948905109489051,
+    "mine_reports_n": 5,
+    "mine_precision": 1.0,
+    "mine_recall_seen": 1.0,
+    "mines_total": 12,
+    "mines_seen": 5,
+    "mines_found": 5,
+    "mine_geo_err_mean": 1.2526421880730758
+   },
+   "stealth_risk": {
+    "p_detect": 0.30108857895218055,
+    "exposure_time_s": 50.5,
+    "mission_time_s": 1698.0,
+    "path_length_m": 3036.776444098577,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.004644361366574952,
+     "Gizli aktif sonar B": 0.0005204550716612085,
+     "Pasif hidrofon dizisi": 0.17539089647479422,
+     "Devriye gemisi": 0.17599915411466618
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.8605146890849267,
+    "exposure_time_s": 332.0,
+    "mission_time_s": 1320.0,
+    "path_length_m": 2433.5441521414123,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.2020648127893045,
+     "Gizli aktif sonar B": 0.06270578469501138,
+     "Pasif hidrofon dizisi": 1.469213935923915,
+     "Devriye gemisi": 0.2295454002728857
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 1.228747081584715,
+    "Sağlam çekirdek yok (L2)": 1.2876417102220623,
+    "Manyetik harita faktörü yok": 11.960629112178113,
+    "Sonar/optik nirengi (SLAM) yok": 1.6943588501049507,
+    "Optik kamera yok": 1.2299198123597723,
+    "Pusula kalibrasyonu yok": 3.4340391569626956,
+    "DVL ölçek kalibrasyonu yok": 1.6218090028654233,
+    "Jiroskop sapma kestirimi yok": 1.8983520451665965,
+    "Pusula faktörü yok": 1.4872713456791948
+   },
+   "runtime_s": 71.59510064125061,
+   "calib_truth": [
+    0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    0.024704320542820138,
+    0.042278609673577126,
+    -0.007686706145751659
+   ],
+   "nees": 4.4633369595795065
+  },
+  {
+   "seed": 807,
+   "nav": {
+    "Ölü hesap (DVL+AHRS)": {
+     "ate_rmse": 55.92835881134232,
+     "max": 76.60886202348138,
+     "final": 76.33616884336944,
+     "heading_rmse_deg": 5.286392967863861,
+     "depth_rmse": 0.048697315548057694
+    },
+    "EKF-SLAM": {
+     "ate_rmse": 2.491506612654596,
+     "max": 6.993357139183824,
+     "final": 2.2897161293884576,
+     "heading_rmse_deg": 0.8274499197922115,
+     "depth_rmse": 0.0324138132810687
+    },
+    "FGO (çevrimiçi)": {
+     "ate_rmse": 2.5802945241000184,
+     "max": 7.4253084235871425,
+     "final": 2.789594893913762,
+     "heading_rmse_deg": 0.8525677379961855,
+     "depth_rmse": 0.04624019471900741
+    },
+    "FGO (düzleştirilmiş)": {
+     "ate_rmse": 1.239696653417731,
+     "max": 3.5317657191611493,
+     "final": 2.532657200562142,
+     "heading_rmse_deg": 0.41255329085591813,
+     "depth_rmse": 0.02582685901321766
+    }
+   },
+   "mapping": {
+    "FGO": {
+     "rmse_all": 12.85686983470783,
+     "median_all": 1.4068116994529936,
+     "rmse": 3.3711096845154693,
+     "median": 1.029071226949201,
+     "n_all": 63,
+     "n": 47
+    },
+    "EKF-SLAM": {
+     "rmse_all": 13.08979715735021,
+     "median_all": 1.4678874589009103,
+     "rmse": 4.439460726159209,
+     "median": 1.1976775288519985,
+     "n_all": 63,
+     "n": 47
+    },
+    "Ölü hesap": {
+     "rmse_all": 50.34860158521639,
+     "median_all": 50.46469780919278,
+     "rmse": 45.11880621136425,
+     "median": 43.21390146247511,
+     "n_all": 63,
+     "n": 47
+    }
+   },
+   "classification": {
+    "confusion": [
+     [
+      96,
+      0,
+      4
+     ],
+     [
+      4,
+      4,
+      0
+     ],
+     [
+      1,
+      0,
+      2
+     ]
+    ],
+    "accuracy": 0.918918918918919,
+    "mine_reports_n": 4,
+    "mine_precision": 1.0,
+    "mine_recall_seen": 0.6666666666666666,
+    "mines_total": 12,
+    "mines_seen": 6,
+    "mines_found": 4,
+    "mine_geo_err_mean": 1.5882957007186567
+   },
+   "stealth_risk": {
+    "p_detect": 0.3051812637372412,
+    "exposure_time_s": 48.5,
+    "mission_time_s": 1598.0,
+    "path_length_m": 2881.5044756491825,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.0017673866683231504,
+     "Gizli aktif sonar B": 0.0015405767157798417,
+     "Pasif hidrofon dizisi": 0.18854921780420053,
+     "Devriye gemisi": 0.17056722883206976
+    }
+   },
+   "stealth_shortest": {
+    "p_detect": 0.857410438733418,
+    "exposure_time_s": 322.5,
+    "mission_time_s": 1316.0,
+    "path_length_m": 2425.2966602795464,
+    "reached_all_goals": true,
+    "per_threat_integrated_lambda": {
+     "Sabit aktif sonar A": 0.20548811596815297,
+     "Gizli aktif sonar B": 0.06614439564291957,
+     "Pasif hidrofon dizisi": 1.4300666873184171,
+     "Devriye gemisi": 0.24146545590259808
+    }
+   },
+   "ablation": {
+    "FGO (tam model)": 1.239696653417731,
+    "Sağlam çekirdek yok (L2)": 3.559160767523973,
+    "Manyetik harita faktörü yok": 11.698336651990347,
+    "Sonar/optik nirengi (SLAM) yok": 1.4378420292644454,
+    "Optik kamera yok": 1.2304593425972032,
+    "Pusula kalibrasyonu yok": 5.04566197308343,
+    "DVL ölçek kalibrasyonu yok": 2.0982531064535634,
+    "Jiroskop sapma kestirimi yok": 2.232536481289304,
+    "Pusula faktörü yok": 1.3765153915165032
+   },
+   "runtime_s": 65.18359231948853,
+   "calib_truth": [
+    -0.026179938779914945,
+    0.04,
+    -0.005964214711729587
+   ],
+   "calib_fgo": [
+    -0.025833081166075682,
+    0.040608461571756356,
+    -0.006496631462936657
+   ],
+   "nees": 3.2937050468294897
+  }
+ ],
+ "ablation_ate": {
+  "FGO (tam model)": [
+   2.1634898268269365,
+   1.010400454211753,
+   1.7169174575978974,
+   2.1717979257133795,
+   1.7135102288986614,
+   2.0545561637234306,
+   1.1876732556915406,
+   1.228747081584715,
+   1.239696653417731
+  ],
+  "Sağlam çekirdek yok (L2)": [
+   3.0679473153547763,
+   1.2915202771652636,
+   2.0106856298374534,
+   2.7812992501434506,
+   1.9920813367464845,
+   2.5848330197728493,
+   1.3275531380499455,
+   1.2876417102220623,
+   3.559160767523973
+  ],
+  "Manyetik harita faktörü yok": [
+   6.582123091018594,
+   11.094354656967786,
+   12.384208574990078,
+   8.396435972828376,
+   2.58025410854736,
+   9.952359926477719,
+   13.713429099977382,
+   11.960629112178113,
+   11.698336651990347
+  ],
+  "Sonar/optik nirengi (SLAM) yok": [
+   2.4581190612768853,
+   1.2975213176070624,
+   1.9675776533326155,
+   3.422726608337452,
+   2.197941140573769,
+   2.47388959691864,
+   1.7041775919151578,
+   1.6943588501049507,
+   1.4378420292644454
+  ],
+  "Optik kamera yok": [
+   2.139737457838743,
+   0.9948038562568632,
+   1.7074216494309444,
+   2.2292071794070907,
+   1.7846369853147854,
+   2.0972461386025674,
+   1.1880143945952633,
+   1.2299198123597723,
+   1.2304593425972032
+  ],
+  "Pusula kalibrasyonu yok": [
+   4.8437525815805245,
+   2.403799587406588,
+   4.585955079375788,
+   3.532224062880396,
+   2.0657315048964238,
+   4.310176475199406,
+   4.454720413938936,
+   3.4340391569626956,
+   5.04566197308343
+  ],
+  "DVL ölçek kalibrasyonu yok": [
+   2.986506954308082,
+   1.8310823169045922,
+   2.5434215275150622,
+   2.51885212276264,
+   1.4144021069287849,
+   1.8645977897537858,
+   1.5116884509001316,
+   1.6218090028654233,
+   2.0982531064535634
+  ],
+  "Jiroskop sapma kestirimi yok": [
+   3.2804991948056252,
+   1.3088698130157934,
+   1.3748667263642862,
+   2.568595985179048,
+   1.6039415690894683,
+   1.9772679393160801,
+   1.169409993233914,
+   1.8983520451665965,
+   2.232536481289304
+  ],
+  "Pusula faktörü yok": [
+   2.980717813679336,
+   1.2598511912262282,
+   1.9604848564954727,
+   2.534021692731168,
+   2.09588345972507,
+   2.406037039170398,
+   1.4516891053593186,
+   1.4872713456791948,
+   1.3765153915165032
+  ]
+ },
+ "stress_test": [
+  {
+   "seed": 107,
+   "Ölü hesap (DVL+AHRS)": 31.13001631161189,
+   "EKF-SLAM (χ² kapısı)": 2.307909926384318,
+   "FGO, sağlam çekirdek yok": 3.273971938148051,
+   "FGO (Huber+Cauchy)": 1.38685400937057,
+   "ekf_rejected": 280
+  },
+  {
+   "seed": 207,
+   "Ölü hesap (DVL+AHRS)": 17.68909435816346,
+   "EKF-SLAM (χ² kapısı)": 2.8056487614685652,
+   "FGO, sağlam çekirdek yok": 4.484244835737601,
+   "FGO (Huber+Cauchy)": 2.975890484513415,
+   "ekf_rejected": 344
+  },
+  {
+   "seed": 307,
+   "Ölü hesap (DVL+AHRS)": 61.12552771439208,
+   "EKF-SLAM (χ² kapısı)": 3.244476159620393,
+   "FGO, sağlam çekirdek yok": 9.39171952348691,
+   "FGO (Huber+Cauchy)": 3.024092129565092,
+   "ekf_rejected": 383
+  },
+  {
+   "seed": 407,
+   "Ölü hesap (DVL+AHRS)": 7.688305323173774,
+   "EKF-SLAM (χ² kapısı)": 1.7716415443387594,
+   "FGO, sağlam çekirdek yok": 2.352870736996789,
+   "FGO (Huber+Cauchy)": 1.4793766197557376,
+   "ekf_rejected": 294
+  }
+ ],
+ "total_runtime_s": 873.9598910808563
+}
